@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Heart Disease Prediction ML Project
 
 ## 🎯 Project Overview
