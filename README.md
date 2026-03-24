@@ -258,7 +258,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 
-=======
+
 # Heart-Disease-Predction
 # ❤️ Heart Disease Risk Prediction using Machine Learning
 
@@ -292,4 +292,4 @@ Future enhancements include hyperparameter tuning, implementation of advanced al
 
 ## 📌 Conclusion
 This project demonstrates the application of machine learning in the healthcare domain, highlighting how data-driven approaches can support early diagnosis and decision-making in critical medical conditions.
->>>>>>> dc22916f9a747e2ee737b07452cd87259a9929ee
+
