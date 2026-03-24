@@ -253,16 +253,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 3. **Research Papers**: 
    - Detrano, R., et al. "International application of a new probability algorithm for the diagnosis of coronary artery disease." American Journal of Cardiology 64.5 (1989): 304-310.
 
-## 👥 Team
 
-- **Shrey and team**
-
-## 📞 Support
-
-For questions or support:
-- Create an issue on GitHub
-- Contact the development team
-- Check documentation and FAQ
 
 ---
 
