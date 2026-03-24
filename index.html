@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Risk Predictor</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Heart Disease Risk Predictor</h1>
+                    <p>Advanced cardiovascular risk assessment tool</p>
+                </div>
+                <div class="header-stats">
+                    <i class="fas fa-user-md"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Form Section -->
+            <div class="form-section">
+                <div class="card">
+                    <div class="card__header">
+                        <h2><i class="fas fa-clipboard-list"></i> Clinical Parameters</h2>
+                        <p>Enter patient information for cardiovascular risk analysis</p>
+                    </div>
+                    <div class="card__body">
+                        <form id="predictionForm" class="prediction-form">
+                            <div class="form-grid">
+                                <!-- Age -->
+                                <div class="form-group">
+                                    <label class="form-label" for="age">Age: <span id="ageValue">45</span> years</label>
+                                    <input type="range" id="age" name="age" min="20" max="100" value="45" class="form-range">
+                                </div>
+
+                                <!-- Sex -->
+                                <div class="form-group">
+                                    <label class="form-label" for="sex">Sex</label>
+                                    <select id="sex" name="sex" class="form-control" required>
+                                        <option value="">Select...</option>
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                </div>
+
+                                <!-- Chest Pain Type -->
+                                <div class="form-group">
+                                    <label class="form-label" for="chestPain">Chest Pain Type</label>
+                                    <select id="chestPain" name="chestPain" class="form-control" required>
+                                        <option value="">Select...</option>
+                                        <option value="3">Typical Angina</option>
+                                        <option value="2">Atypical Angina</option>
+                                        <option value="1">Non-anginal Pain</option>
+                                        <option value="0">Asymptomatic</option>
+                                    </select>
+                                </div>
+
+                                <!-- Resting Blood Pressure -->
+                                <div class="form-group">
+                                    <label class="form-label" for="bloodPressure">Resting Blood Pressure (mmHg)</label>
+                                    <input type="number" id="bloodPressure" name="bloodPressure" min="80" max="220" value="120" class="form-control" required>
+                                </div>
+
+                                <!-- Cholesterol -->
+                                <div class="form-group">
+                                    <label class="form-label" for="cholesterol">Cholesterol (mg/dl)</label>
+                                    <input type="number" id="cholesterol" name="cholesterol" min="100" max="600" value="200" class="form-control" required>
+                                </div>
+
+                                <!-- Fasting Blood Sugar -->
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <input type="checkbox" id="fastingBS" name="fastingBS" value="1" class="form-checkbox">
+                                        Fasting Blood Sugar > 120 mg/dl
+                                    </label>
+                                </div>
+
+                                <!-- Resting ECG -->
+                                <div class="form-group">
+                                    <label class="form-label" for="restingECG">Resting ECG</label>
+                                    <select id="restingECG" name="restingECG" class="form-control" required>
+                                        <option value="">Select...</option>
+                                        <option value="0">Normal</option>
+                                        <option value="1">ST-T Wave Abnormality</option>
+                                        <option value="2">LV Hypertrophy</option>
+                                    </select>
+                                </div>
+
+                                <!-- Maximum Heart Rate -->
+                                <div class="form-group">
+                                    <label class="form-label" for="maxHeartRate">Max Heart Rate: <span id="maxHRValue">150</span> bpm</label>
+                                    <input type="range" id="maxHeartRate" name="maxHeartRate" min="60" max="220" value="150" class="form-range">
+                                </div>
+
+                                <!-- Exercise Induced Angina -->
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <input type="checkbox" id="exerciseAngina" name="exerciseAngina" value="1" class="form-checkbox">
+                                        Exercise Induced Angina
+                                    </label>
+                                </div>
+
+                                <!-- ST Depression -->
+                                <div class="form-group">
+                                    <label class="form-label" for="stDepression">ST Depression/Oldpeak</label>
+                                    <input type="number" id="stDepression" name="stDepression" min="0" max="6" step="0.1" value="0" class="form-control" required>
+                                </div>
+
+                                <!-- ST Slope -->
+                                <div class="form-group">
+                                    <label class="form-label" for="stSlope">Slope of ST Segment</label>
+                                    <select id="stSlope" name="stSlope" class="form-control" required>
+                                        <option value="">Select...</option>
+                                        <option value="2">Upsloping</option>
+                                        <option value="1">Flat</option>
+                                        <option value="0">Downsloping</option>
+                                    </select>
+                                </div>
+
+                                <!-- Number of Major Vessels -->
+                                <div class="form-group">
+                                    <label class="form-label" for="vessels">Number of Major Vessels</label>
+                                    <select id="vessels" name="vessels" class="form-control" required>
+                                        <option value="">Select...</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+
+                                <!-- Thalassemia -->
+                                <div class="form-group">
+                                    <label class="form-label" for="thalassemia">Thalassemia</label>
+                                    <select id="thalassemia" name="thalassemia" class="form-control" required>
+                                        <option value="">Select...</option>
+                                        <option value="1">Normal</option>
+                                        <option value="2">Fixed Defect</option>
+                                        <option value="3">Reversible Defect</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn--primary btn--lg">
+                                    <i class="fas fa-chart-line"></i> Analyze Risk
+                                </button>
+                                <button type="button" id="resetForm" class="btn btn--outline btn--lg">
+                                    <i class="fas fa-redo"></i> Reset Form
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="card">
+                    <div class="card__header">
+                        <h2><i class="fas fa-chart-pie"></i> Risk Assessment Results</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="results-grid">
+                            <!-- Risk Level Display -->
+                            <div class="risk-display">
+                                <div class="risk-gauge-container">
+                                    <canvas id="riskGauge" width="300" height="150"></canvas>
+                                </div>
+                                <div class="risk-info">
+                                    <div class="risk-level" id="riskLevel">Low Risk</div>
+                                    <div class="risk-percentage" id="riskPercentage">15%</div>
+                                    <div class="risk-description" id="riskDescription">Your cardiovascular risk is within normal range.</div>
+                                </div>
+                            </div>
+
+                            <!-- Risk Factors Breakdown -->
+                            <div class="risk-factors">
+                                <h3>Risk Factor Contributions</h3>
+                                <div class="chart-container" style="position: relative; height: 300px;">
+                                    <canvas id="factorsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations -->
+                        <div class="recommendations" id="recommendations">
+                            <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+                            <div class="recommendation-list" id="recommendationList">
+                                <!-- Dynamic recommendations will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Information Panel -->
+            <div class="info-section">
+                <div class="card">
+                    <div class="card__header">
+                        <h2><i class="fas fa-info-circle"></i> Medical Information</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="info-tabs">
+                            <div class="tab-buttons">
+                                <button class="tab-button active" data-tab="parameters">Parameters Guide</button>
+                                <button class="tab-button" data-tab="research">Research Data</button>
+                                <button class="tab-button" data-tab="disclaimer">Medical Disclaimer</button>
+                            </div>
+
+                            <div class="tab-content active" id="parameters">
+                                <div class="parameter-info">
+                                    <h4>Clinical Parameter Explanations</h4>
+                                    <div class="parameter-grid">
+                                        <div class="parameter-item">
+                                            <strong>Chest Pain Type:</strong> Different types indicate varying levels of cardiac involvement.
+                                        </div>
+                                        <div class="parameter-item">
+                                            <strong>Resting Blood Pressure:</strong> Elevated BP increases cardiovascular workload.
+                                        </div>
+                                        <div class="parameter-item">
+                                            <strong>Cholesterol:</strong> High levels contribute to arterial plaque formation.
+                                        </div>
+                                        <div class="parameter-item">
+                                            <strong>Exercise Induced Angina:</strong> Chest pain during exercise may indicate coronary insufficiency.
+                                        </div>
+                                        <div class="parameter-item">
+                                            <strong>ST Depression:</strong> ECG changes that may indicate ischemia.
+                                        </div>
+                                        <div class="parameter-item">
+                                            <strong>Thalassemia:</strong> Blood disorder that can affect cardiac function.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-content" id="research">
+                                <h4>Machine Learning Model Performance</h4>
+                                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/de85d60424329eb19c7036c027a9a75d/3ed70d85-bfcb-4f20-a7bd-ec6bd820e9bd/8bc24c8f.png" alt="ML Performance Comparison" class="research-chart">
+                                <p>Comparison of various machine learning algorithms used in heart disease prediction, showing Random Forest and XGBoost achieve the highest accuracy.</p>
+                                
+                                <h4>Feature Importance Analysis</h4>
+                                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/de85d60424329eb19c7036c027a9a75d/84f235b6-4ce5-4b38-a0c6-39ecdedce2d7/cb998f2f.png" alt="Feature Importance" class="research-chart">
+                                <p>Clinical factors ranked by their importance in predicting heart disease, with chest pain type being the most significant predictor.</p>
+                            </div>
+
+                            <div class="tab-content" id="disclaimer">
+                                <div class="disclaimer-content">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> Important Medical Disclaimer</h4>
+                                    <p><strong>This tool is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment.</strong></p>
+                                    <ul>
+                                        <li>Always consult with a qualified healthcare provider for medical decisions</li>
+                                        <li>This prediction model is based on statistical analysis and may not account for all individual factors</li>
+                                        <li>Results should be interpreted in conjunction with comprehensive medical evaluation</li>
+                                        <li>Emergency medical conditions require immediate professional attention</li>
+                                        <li>Regular health screenings and professional consultations are recommended</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

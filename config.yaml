@@ -1,0 +1,64 @@
+# Heart Disease Prediction Configuration
+
+# Data Configuration
+data:
+  raw_data_path: "data/raw/"
+  processed_data_path: "data/processed/"
+  test_size: 0.2
+  random_state: 42
+  target_column: "target"
+
+# Preprocessing Configuration
+preprocessing:
+  handle_missing_values: true
+  remove_outliers: true
+  scale_features: true
+  encode_categorical: true
+  feature_engineering: true
+
+# Model Training Configuration
+training:
+  cross_validation_folds: 5
+  hyperparameter_tuning: true
+  save_models: true
+  models_path: "models/trained_models/"
+
+  # Models to train
+  models:
+    - "logistic_regression"
+    - "random_forest"
+    - "xgboost"
+    - "svm"
+    - "knn"
+    - "decision_tree"
+    - "naive_bayes"
+    - "neural_network"
+    - "adaboost"
+    - "gradient_boosting"
+
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "auc_score"
+    - "matthews_corrcoef"
+
+  generate_plots: true
+  save_results: true
+  results_path: "reports/"
+
+# Web Application Configuration
+web_app:
+  title: "Heart Disease Prediction System"
+  host: "localhost"
+  port: 8501
+  debug: false
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  file: "logs/heart_disease_prediction.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
