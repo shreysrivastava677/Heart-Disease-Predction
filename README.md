@@ -255,9 +255,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-- **Data Science Team**: Model development and validation
-- **Engineering Team**: Pipeline and deployment
-- **Medical Advisory**: Clinical expertise and validation
+- **Shrey and team**
 
 ## 📞 Support
 
