@@ -268,7 +268,7 @@ For questions or support:
 
 ---
 
-**Made with ❤️ for better healthcare through AI**
+
 =======
 # Heart-Disease-Predction
 # ❤️ Heart Disease Risk Prediction using Machine Learning
